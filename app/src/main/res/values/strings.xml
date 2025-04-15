@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Quest1-Hilt</string>
+    <string name="user_posted">UserID %1$d posted</string>
+    <string name="title_activity_main2">MainActivity2</string>
+</resources>

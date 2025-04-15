@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/postListingFragment">
+    <fragment
+        android:id="@+id/postListingFragment"
+        android:name="com.devgun.quest1_hilt.presentation.views.post.listing.PostListingFragment"
+        android:label="PostListingFragment" >
+        <argument
+            android:name="postId"
+            app:argType="integer" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="android-app://quest1/overview/{postId}" />
+    </fragment>
+    <fragment
+        android:id="@+id/postOverviewFragment"
+        android:name="com.devgun.quest1_hilt.presentation.views.post.overview.PostOverviewFragment"
+        android:label="PostOverviewFragment" />
+</navigation>
