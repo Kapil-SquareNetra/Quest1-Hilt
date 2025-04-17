@@ -1,9 +1,11 @@
 package com.devgun.quest1_hilt.presentation.views.post.listing
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.devgun.quest1_hilt.data.remote.entity.PostEntity
 import com.devgun.quest1_hilt.domain.repository.PostsRepository
+import com.devgun.quest1_hilt.presentation.ui.models.LoaderDisplayInfo
 import com.devgun.quest1_hilt.presentation.ui.models.PostItemModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -26,13 +28,29 @@ class PostListingViewModel @Inject constructor(
     val toastEvent = _toastEvent.asSharedFlow()
 
     init {
+        Log.i("kapil", "PostListingViewModel.init")
+        state.update {
+            it.copy(
+                showLoader = LoaderDisplayInfo(
+                    showLoader = true,
+                    message = "fetching"
+                )
+            )
+        }
         viewModelScope.launch {
+            Log.i("kapil", "PostListingViewModel.init.launch")
             postsRepository.fetchPostsAndStore().fold(
                 onSuccess = { getPosts() },
                 onFailure = { throwable ->
                     triggerToast(throwable.message.toString())
                 }
             )
+        }.invokeOnCompletion {
+            state.update {
+                it.copy(
+                    showLoader = LoaderDisplayInfo()
+                )
+            }
         }
     }
 

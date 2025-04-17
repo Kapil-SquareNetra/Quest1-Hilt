@@ -1,5 +1,6 @@
 package com.devgun.quest1_hilt.data.repository
 
+import android.util.Log
 import com.devgun.quest1_hilt.data.remote.api.PostsAPI
 import com.devgun.quest1_hilt.data.remote.api.model.Posts
 import com.devgun.quest1_hilt.data.remote.dao.PostsDao
@@ -15,9 +16,11 @@ class PostsRepositoryImpl @Inject constructor(
     private val postsDao: PostsDao
 ): PostsRepository {
     override suspend fun fetchPostsAndStore(): Result<Unit> {
+        Log.i("kapil", "fetchPostsAndStore()")
         return postsAPI.runSuspendCatching {
             getPosts()
         }.mapCatching { response ->
+            Log.i("kapil", response.toString())
             if (response.isSuccessful) {
                 val posts = response.body().orEmpty().map { it.mapToPostsEntity() }
                 if (posts.isEmpty()) {

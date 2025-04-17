@@ -21,7 +21,9 @@ class PostOverviewViewModel @Inject constructor(
     private val postsRepository: PostsRepository,
     savedStateHandle: SavedStateHandle
 ): ViewModel() {
-    private val postId: Int? = savedStateHandle["id"]
+
+    private val postId: Int? = savedStateHandle["postId"]
+
 
     private val state = MutableStateFlow(PostOverviewState())
     internal val uiState: StateFlow<PostOverviewState> = state.asStateFlow()

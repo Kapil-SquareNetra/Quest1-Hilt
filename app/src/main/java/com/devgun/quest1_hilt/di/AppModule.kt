@@ -10,6 +10,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
 @Module
@@ -19,8 +20,8 @@ object AppModule {
     @Provides
     @Singleton
     fun providePostsAPI(): PostsAPI {
-        return Retrofit.
-        Builder()
+        return Retrofit.Builder()
+            .addConverterFactory(GsonConverterFactory.create())
             .baseUrl("https://jsonplaceholder.typicode.com/")
             .build()
             .create(PostsAPI::class.java)
