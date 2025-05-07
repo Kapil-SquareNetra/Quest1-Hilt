@@ -1,4 +1,4 @@
-package com.devgun.quest1_hilt.data.remote.api.model
+package com.devgun.quest1_hilt.data.remote.api.posts
 
 data class Posts(
     val id: Int,

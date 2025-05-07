@@ -27,7 +27,7 @@ import com.devgun.quest1_hilt.R
 import com.devgun.quest1_hilt.presentation.ui.models.PostItemModel
 
 @Composable
-fun RowItem(
+fun PostItem(
     modifier: Modifier = Modifier,
     post: PostItemModel,
     clickEvent: () -> Unit
@@ -87,7 +87,7 @@ fun RowItem(
 @Preview(showBackground = true)
 @Composable
 fun ShowRowItemPreview(){
-    RowItem(
+    PostItem(
         modifier = Modifier.padding(vertical = 8.dp),
         post = PostItemModel(
             id = 1,

@@ -1,14 +1,13 @@
 package com.devgun.quest1_hilt.data.repository
 
 import android.util.Log
-import com.devgun.quest1_hilt.data.remote.api.PostsAPI
-import com.devgun.quest1_hilt.data.remote.api.model.Posts
+import com.devgun.quest1_hilt.data.remote.api.posts.PostsAPI
+import com.devgun.quest1_hilt.data.remote.api.posts.Posts
 import com.devgun.quest1_hilt.data.remote.dao.PostsDao
 import com.devgun.quest1_hilt.data.remote.entity.PostEntity
 import com.devgun.quest1_hilt.domain.repository.PostsRepository
 import com.devgun.quest1_hilt.runSuspendCatching
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class PostsRepositoryImpl @Inject constructor(
