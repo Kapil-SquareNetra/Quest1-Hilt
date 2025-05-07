@@ -10,7 +10,6 @@ import com.devgun.quest1_hilt.data.remote.entity.PostEntity
     version = 1
 )
 
-
 abstract class PostsDatabase: RoomDatabase() {
     abstract val postsDao: PostsDao
 }

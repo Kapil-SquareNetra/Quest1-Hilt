@@ -1,6 +1,7 @@
 package com.devgun.quest1_hilt.presentation.ui.composables
 
 import androidx.annotation.DrawableRes
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -9,6 +10,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
+import androidx.compose.material.icons.filled.Done
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,6 +35,7 @@ fun CommonHeader(
     headerText: String,
     @DrawableRes leadingIcon: Int? = null,
     leadingIconClick: () -> Unit = {},
+    trailingComposable: @Composable () -> Unit = {}
 ) {
     Row(
         modifier = modifier
@@ -63,6 +68,7 @@ fun CommonHeader(
                 fontWeight = FontWeight.Bold
             )
         )
+        trailingComposable()
     }
 }
 
@@ -80,5 +86,17 @@ fun ShowCommonHeaderPreview(){
 fun ShowCommonHeaderPreview2(){
     CommonHeader(
         headerText = "Listing",
+        trailingComposable = {
+            Row {
+                Image(
+                    imageVector = Icons.Default.Done,
+                    contentDescription = null
+                )
+                Image(
+                    imageVector = Icons.Default.Clear,
+                    contentDescription = null
+                )
+            }
+        }
     )
 }

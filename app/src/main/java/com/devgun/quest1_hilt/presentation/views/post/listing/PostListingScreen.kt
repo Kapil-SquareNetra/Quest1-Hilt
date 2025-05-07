@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import com.devgun.quest1_hilt.R
 import com.devgun.quest1_hilt.presentation.ui.composables.CommonHeader
 import com.devgun.quest1_hilt.presentation.ui.composables.CommonLoader
-import com.devgun.quest1_hilt.presentation.ui.composables.RowItem
+import com.devgun.quest1_hilt.presentation.ui.composables.PostItem
 
 @Composable
 fun PostListingScreen(
@@ -48,7 +48,7 @@ fun PostListingScreen(
                 itemsIndexed(items = state.posts,
                     key = { _, post -> post.id }
                 ) { _, post ->
-                    RowItem(
+                    PostItem(
                         post = post,
                         clickEvent = {
                             onPostClicked(post.id)
