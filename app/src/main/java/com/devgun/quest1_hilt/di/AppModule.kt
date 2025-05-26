@@ -9,6 +9,8 @@ import com.devgun.quest1_hilt.data.remote.dao.PostsDao
 import com.devgun.quest1_hilt.data.remote.dao.ProductsDao
 import com.devgun.quest1_hilt.data.remote.db.PostsDatabase
 import com.devgun.quest1_hilt.data.remote.db.ProductsDatabase
+import com.devgun.quest1_hilt.data.repository.FakeOrdersRepositoryImpl
+import com.devgun.quest1_hilt.domain.repository.FakeOrdersRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -83,6 +85,12 @@ object AppModule {
     @Singleton
     fun provideCategoryDao(database: ProductsDatabase): CategoryDao {
         return database.categoryDao
+    }
+
+    @Provides
+    @Singleton
+    fun providesFakeRepository(): FakeOrdersRepository {
+        return FakeOrdersRepositoryImpl()
     }
 
 }

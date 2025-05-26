@@ -2,7 +2,7 @@ package com.devgun.quest1_hilt.data.repository
 
 import android.util.Log
 import com.devgun.quest1_hilt.data.remote.api.posts.PostsAPI
-import com.devgun.quest1_hilt.data.remote.api.posts.Posts
+import com.devgun.quest1_hilt.data.remote.api.posts.model.Posts
 import com.devgun.quest1_hilt.data.remote.dao.PostsDao
 import com.devgun.quest1_hilt.data.remote.entity.PostEntity
 import com.devgun.quest1_hilt.domain.repository.PostsRepository
