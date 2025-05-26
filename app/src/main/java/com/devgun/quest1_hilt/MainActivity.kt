@@ -8,11 +8,14 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.devgun.quest1_hilt.presentation.HomePage
+import com.devgun.quest1_hilt.presentation.OrderDashboard
 import com.devgun.quest1_hilt.presentation.PostListing
 import com.devgun.quest1_hilt.presentation.PostOverview
 import com.devgun.quest1_hilt.presentation.SearchProduct
 import com.devgun.quest1_hilt.presentation.views.home.HomeScreen
 import com.devgun.quest1_hilt.presentation.views.home.HomeScreenViewModel
+import com.devgun.quest1_hilt.presentation.views.orders.OrderDashboardScreen
+import com.devgun.quest1_hilt.presentation.views.orders.OrderDashboardViewModel
 import com.devgun.quest1_hilt.presentation.views.post.listing.PostListingScreen
 import com.devgun.quest1_hilt.presentation.views.post.listing.PostListingViewModel
 import com.devgun.quest1_hilt.presentation.views.post.overview.PostOverviewScreen
@@ -38,6 +41,9 @@ class MainActivity : ComponentActivity() {
                         },
                         onPostsClicked = {
                             navController.navigate(PostListing)
+                        },
+                        onDashboardClicked =  {
+                            navController.navigate(OrderDashboard)
                         }
                     )
                 }
@@ -57,6 +63,12 @@ class MainActivity : ComponentActivity() {
                 composable<SearchProduct> {
                     SearchProductScreen(
                         viewModel = hiltViewModel<SearchProductViewModel>(),
+                        onBackClick = { navController.navigateUp() }
+                    )
+                }
+                composable<OrderDashboard> {
+                    OrderDashboardScreen(
+                        viewModel = hiltViewModel<OrderDashboardViewModel>(),
                         onBackClick = { navController.navigateUp() }
                     )
                 }

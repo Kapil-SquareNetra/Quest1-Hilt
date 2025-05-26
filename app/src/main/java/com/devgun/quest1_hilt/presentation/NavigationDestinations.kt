@@ -15,3 +15,6 @@ data class PostOverview(
 
 @Serializable
 object SearchProduct
+
+@Serializable
+object OrderDashboard
